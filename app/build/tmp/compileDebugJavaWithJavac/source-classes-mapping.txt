@@ -1,0 +1,26 @@
+com/example/loraapp/TableActivity.java
+ com.example.loraapp.TableActivity
+com/example/loraapp/DataActivity.java
+ com.example.loraapp.DataActivity
+com/example/loraapp/Role.java
+ com.example.loraapp.Role
+com/example/loraapp/MainActivity.java
+ com.example.loraapp.MainActivity
+com/example/loraapp/AddSensorActivity.java
+ com.example.loraapp.AddSensorActivity
+com/example/loraapp/BuildConfig.java
+ com.example.loraapp.BuildConfig
+com/example/loraapp/UNAuthActivity.java
+ com.example.loraapp.UNAuthActivity
+com/example/loraapp/ChooseActivity.java
+ com.example.loraapp.ChooseActivity
+com/example/loraapp/TransferSuccessActivity.java
+ com.example.loraapp.TransferSuccessActivity
+com/example/loraapp/SensorEngineerActivity.java
+ com.example.loraapp.SensorEngineerActivity
+com/example/loraapp/SensorMechanicActivity.java
+ com.example.loraapp.SensorMechanicActivity
+com/example/loraapp/RegisterSuccessActivity.java
+ com.example.loraapp.RegisterSuccessActivity
+com/example/loraapp/CheckQRCodeActivity.java
+ com.example.loraapp.CheckQRCodeActivity
