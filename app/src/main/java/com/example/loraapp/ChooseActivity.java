@@ -1,12 +1,26 @@
 package com.example.loraapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
+import com.blikoon.qrcodescanner.QrCodeActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,6 +31,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class ChooseActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private static final int REQUEST_CODE_QR_SCAN = 101;
+    Intent intentScan, intentTrans;
+    String url = "";
+    int mode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +49,8 @@ public class ChooseActivity extends AppCompatActivity implements OnMapReadyCallb
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        
-        mapFragment.getMapAsync(this);
 
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -52,15 +69,77 @@ public class ChooseActivity extends AppCompatActivity implements OnMapReadyCallb
     }
 
     public void gotoQRCheckRegister(View v) {
-        Intent intent = new Intent(ChooseActivity.this, CheckQRCodeActivity.class);
-        intent.putExtra("mode", 1);
-        startActivity(intent);
+        intentScan = new Intent(ChooseActivity.this, QrCodeActivity.class);
+        intentScan.putExtra("mode", 1);
+        startActivityForResult(intentScan, REQUEST_CODE_QR_SCAN);
+        mode = 1;
     }
 
     public void gotoQRCheckTransfer(View v) {
-        Intent intent = new Intent(ChooseActivity.this, CheckQRCodeActivity.class);
-        intent.putExtra("mode", 2);
-        startActivity(intent);
+        intentTrans = new Intent(ChooseActivity.this, QrCodeActivity.class);
+        intentTrans.putExtra("mode", 2);
+        startActivityForResult(intentTrans, REQUEST_CODE_QR_SCAN);
+        mode = 2;
     }
 
+    @SuppressLint("MissingPermission")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != Activity.RESULT_OK) {
+            Log.d("SCAN", "COULD NOT GET A GOOD RESULT.");
+            if (data == null)
+                return;
+            String result = data.getStringExtra("com.blikoon.qrcodescanner.error_decoding_image");
+            if (result != null) {
+                AlertDialog alertDialog = new AlertDialog.Builder(ChooseActivity.this).create();
+                alertDialog.setTitle("Scan Error");
+                alertDialog.setMessage("QR Code could not be scanned");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+            }
+            return;
+
+        }
+        if (requestCode == REQUEST_CODE_QR_SCAN) {
+            if (data == null)
+                return;
+            String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
+
+            double[] coords = new double[2];
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            if (lm != null) {
+                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (location == null) {
+                    location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                }
+                if (location != null) {
+                    coords[0] = location.getLongitude();
+                    coords[1] = location.getLatitude();
+                    Log.d("SCANNN", "Have scan result in your app activity :" + result + " " + location.getLongitude() + " " + coords[1]);
+                }
+            }
+
+            Log.d("SCANNN", "Have scan result in your app activity :" + result + " " + coords[0] + " " + coords[1]);
+
+            //ServerConnection conn = new ServerConnection(url);
+            if(mode == 1){
+                //conn.sendPos(result,coords);
+
+                //Intent intent = new Intent(ChooseActivity.this, RegisterSuccessActivity.class);
+                //startActivity(intent);
+            }
+            else {
+                //conn.checkPos(result,coords);
+
+                //Intent intent = new Intent(ChooseActivity.this, TransferSuccessActivity.class);
+                //startActivity(intent);
+            }
+        }
+    }
 }
