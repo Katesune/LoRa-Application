@@ -20,7 +20,7 @@
 
         android:background="@drawable/backbutt"
 
-        android:onClick="gotoQRActivity" />
+        android:onClick="goToMain" />
 
     <View
         android:layout_width="652px"

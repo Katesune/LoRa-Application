@@ -14,6 +14,11 @@ public class RegisterSuccessActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_success);
     }
 
+    public void goToMain(View v){
+        Intent intent = new Intent(RegisterSuccessActivity.this, EngineerActivity.class);
+        startActivity(intent);
+    }
+
     public void gotoQRActivity(View v) {
         Intent intent = new Intent(RegisterSuccessActivity.this, CheckQRCodeActivity.class);
         startActivity(intent);
@@ -22,5 +27,6 @@ public class RegisterSuccessActivity extends AppCompatActivity {
     public void gotoAddSensorInfo(View v) {
         Intent intent = new Intent(RegisterSuccessActivity.this, AddSensorActivity.class);
         startActivity(intent);
+        //TODO: может, здесь лучше перенаправить на активити с информацией по всем датчикам? Хотя в тз вообще такого нет, можно не париться
     }
 }

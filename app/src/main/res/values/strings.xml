@@ -18,6 +18,7 @@
     <string name="longtitude">Longtitude</string>
     <string name="neighbours">Neighbours</string>
     <string name="status">Status</string>
+    <string name="code">Code</string>
 
     <string-array name="dates">
         <item>Last Day</item>

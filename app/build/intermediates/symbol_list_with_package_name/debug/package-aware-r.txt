@@ -1867,6 +1867,7 @@ id action_text
 id actions
 id activity_choose
 id activity_chooser_view_content
+id activity_engineer
 id activity_sensor_engineer
 id activity_sensor_mechanic
 id add
@@ -1914,6 +1915,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id code
 id collapseActionView
 id confirm_button
 id container
@@ -2327,9 +2329,12 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_sensor
+layout activity_add_success
 layout activity_check_q_r_code
+layout activity_check_success
 layout activity_choose
 layout activity_data
+layout activity_engineer
 layout activity_main
 layout activity_qr_code
 layout activity_register_success
@@ -2462,6 +2467,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string code
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title

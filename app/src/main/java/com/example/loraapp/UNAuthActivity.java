@@ -15,7 +15,7 @@ public class UNAuthActivity extends AppCompatActivity {
     }
 
     public void gotoMain(View v) {
-        Intent intent = new Intent(UNAuthActivity.this, MainActivity.class);
+        Intent intent = new Intent(UNAuthActivity.this, ChooseActivity.class);
         startActivity(intent);
     }
 }

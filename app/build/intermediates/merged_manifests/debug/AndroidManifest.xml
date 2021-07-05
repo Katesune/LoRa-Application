@@ -46,7 +46,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.LoraApp" >
+        android:theme="@style/Theme.LoraApp"
+        android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.loraapp.CheckSuccessActivity" />
+        <activity android:name="com.example.loraapp.AddSuccessActivity" />
+        <activity android:name="com.example.loraapp.EngineerActivity" />
         <activity android:name="com.example.loraapp.SensorEngineerActivity" />
         <activity android:name="com.example.loraapp.SensorMechanicActivity" />
         <activity android:name="com.example.loraapp.TableActivity" />

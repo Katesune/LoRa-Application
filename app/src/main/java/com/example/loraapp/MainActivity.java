@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         r.setRole("engineer");
 
         Intent intent = new Intent(MainActivity.this, ChooseActivity.class);
+        //Intent intent = new Intent(MainActivity.this, EngineerActivity.class);
         startActivity(intent);
 
 

@@ -33,7 +33,7 @@ public class ChooseActivity extends AppCompatActivity implements OnMapReadyCallb
     private GoogleMap mMap;
     private static final int REQUEST_CODE_QR_SCAN = 101;
     Intent intentScan, intentTrans;
-    String url = "";
+    String url = "http://192.168.50.170:5000";
     int mode = 0;
 
     @Override
@@ -111,7 +111,7 @@ public class ChooseActivity extends AppCompatActivity implements OnMapReadyCallb
                 return;
             String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
 
-            double[] coords = new double[2];
+            double latitude=0, longitude=0;
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             if (lm != null) {
                 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -119,26 +119,22 @@ public class ChooseActivity extends AppCompatActivity implements OnMapReadyCallb
                     location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 }
                 if (location != null) {
-                    coords[0] = location.getLongitude();
-                    coords[1] = location.getLatitude();
-                    Log.d("SCANNN", "Have scan result in your app activity :" + result + " " + location.getLongitude() + " " + coords[1]);
+                    latitude = location.getLongitude();
+                    longitude = location.getLatitude();
+                    Log.d("DATA", "Have scan result in your app activity :" + result + " " + latitude + " " + longitude);
                 }
             }
 
-            Log.d("SCANNN", "Have scan result in your app activity :" + result + " " + coords[0] + " " + coords[1]);
-
-            //ServerConnection conn = new ServerConnection(url);
+            ServerConnection conn = new ServerConnection(url, this);
             if(mode == 1){
-                //conn.sendPos(result,coords);
-
-                //Intent intent = new Intent(ChooseActivity.this, RegisterSuccessActivity.class);
-                //startActivity(intent);
+                conn.sendPos(result, new DeviceCoords(latitude, longitude));
             }
             else {
-                //conn.checkPos(result,coords);
-
-                //Intent intent = new Intent(ChooseActivity.this, TransferSuccessActivity.class);
-                //startActivity(intent);
+                if (conn.checkPos(result, latitude, longitude)){
+                    Intent intent = new Intent(ChooseActivity.this, CheckSuccessActivity.class);
+                    intent.putExtra("device_code", result);
+                    startActivity(intent);
+                }
             }
         }
     }

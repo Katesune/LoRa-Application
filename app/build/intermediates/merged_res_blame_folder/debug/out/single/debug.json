@@ -36,6 +36,10 @@
         "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\drawable\\spinner_item.xml"
     },
     {
+        "merged": "C:\\Users\\user\\Android\\LoRa-Application\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_check_success.xml.flat",
+        "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\layout\\activity_check_success.xml"
+    },
+    {
         "merged": "C:\\Users\\user\\Android\\LoRa-Application\\app\\build\\intermediates\\res\\merged\\debug\\font_october.ttf.flat",
         "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\font\\october.ttf"
     },
@@ -136,6 +140,10 @@
         "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\drawable\\devices.png"
     },
     {
+        "merged": "C:\\Users\\user\\Android\\LoRa-Application\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_add_success.xml.flat",
+        "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\layout\\activity_add_success.xml"
+    },
+    {
         "merged": "C:\\Users\\user\\Android\\LoRa-Application\\app\\build\\intermediates\\res\\merged\\debug\\drawable_table_item.xml.flat",
         "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\drawable\\table_item.xml"
     },
@@ -186,6 +194,10 @@
     {
         "merged": "C:\\Users\\user\\Android\\LoRa-Application\\app\\build\\intermediates\\res\\merged\\debug\\drawable_unauthmessage.png.flat",
         "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\drawable\\unauthmessage.png"
+    },
+    {
+        "merged": "C:\\Users\\user\\Android\\LoRa-Application\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_engineer.xml.flat",
+        "source": "C:\\Users\\user\\Android\\LoRa-Application\\app\\src\\main\\res\\layout\\activity_engineer.xml"
     },
     {
         "merged": "C:\\Users\\user\\Android\\LoRa-Application\\app\\build\\intermediates\\res\\merged\\debug\\drawable_addsensor.png.flat",
